@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>编程算法——穷举法 | 许戈的第一个网站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://yjxg.github.io/favicon.ico?v=1650791028496">
+<link rel="stylesheet" href="https://yjxg.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+
+穷举法的整体思路还是比较容易理解的，总体来说就是让某个未知量从零开始，通过整体的公式或者方程，让其未知量的值从0递增或从某个值递减从而来判断其公式或着方程是否符合条件，从而解出方程，获得方程的解。
+
+
+
+典型例子：
+鸡兔同笼问题：鸡兔同..." />
+    <meta name="keywords" content="算法,代码" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://yjxg.github.io">
+        <img src="https://yjxg.github.io/images/avatar.png?v=1650791028496" class="site-logo">
+        <h1 class="site-title">许戈的第一个网站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://yjxg.github.io/archives" class="site-nav">
+            搜索
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://yjxg.github.io" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      阳光，快乐的生活着！
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://yjxg.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">编程算法——穷举法</h2>
+            <div class="post-date">2022-04-24</div>
+            
+              <div class="feature-container" style="background-image: url('https://yjxg.github.io/post-images/bian-cheng-suan-fa-qiong-ju-fa.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <!-- more -->
+<!-- more -->
+<p>穷举法的整体思路还是比较容易理解的，总体来说就是让某个未知量从零开始，通过整体的公式或者方程，让其未知量的值从0递增或从某个值递减从而来判断其公式或着方程是否符合条件，从而解出方程，获得方程的解。</p>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://yjxg.github.io/post-images/1650791008187.jpg" alt="" loading="lazy"></figure>
+<!-- more -->
+<p>典型例子：<br>
+鸡兔同笼问题：鸡兔同笼问题是中国古代的数学名题之一，大约在1500年前，《孙子算经》中就记载了这个有趣的问题，书中是这样说的：今有雉兔同笼，上有三十五头，下有九十四足，问雉各几何？这句话的意思是：有若干只鸡和兔字被关在同一个笼子里，从上面数，有35个头，从下面数，有94只脚，问笼中各有几只鸡和兔？</p>
+<!-- more -->
+<p>问题分析：<br>
+鸡兔同笼问题，如果用传统的数学方法来解决也确实不难，就是列举两个简单的一元二次方程就能算出鸡兔各多少只。但是如果要用计算机编程来解决这样的问题，用到的思路就是穷举法，即让鸡的数量x从0开始逐渐递增到总35，则兔子的数量就是35-x，然后根据：<br>
+2*x+（35-x）=94这个关系式的值是否为真来判断是否符合条件，如果是，则输出鸡和兔子的数量。</p>
+<!-- more -->
+<p>程序代码：<br>
+#include &lt;stdio.h&gt;<br>
+int main (void) {<br>
+printf(&quot;Here is the output :\n&quot;);<br>
+int chick, rabbit;<br>
+for (chick = 0; chick &lt;= 35; chick++) {<br>
+rabbit = 35 - chick;<br>
+if (2 * chick + 4 * rabbit == 94)<br>
+printf(&quot;chick=%d,rabbit=%d&quot;, chick, rabbit);<br>
+}<br>
+return 0;<br>
+}</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://yjxg.github.io/tag/LjGFfLiGq/" class="tag">
+                    算法
+                  </a>
+                
+                  <a href="https://yjxg.github.io/tag/qNBtrV-0y/" class="tag">
+                    代码
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://yjxg.github.io/post/hello-world/">
+                  <h3 class="post-title">
+                    Hello World !
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
