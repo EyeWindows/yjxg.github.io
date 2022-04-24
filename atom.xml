@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yjxg.github.io</id>
-    <title>yjxg.github.io</title>
-    <updated>2022-04-24T06:25:05.770Z</updated>
+    <title>许戈的第一个网站</title>
+    <updated>2022-04-24T06:28:26.917Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yjxg.github.io"/>
     <link rel="self" href="https://yjxg.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://yjxg.github.io/images/avatar.png</logo>
     <icon>https://yjxg.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2022, yjxg.github.io</rights>
+    <rights>All rights reserved 2022, 许戈的第一个网站</rights>
     <entry>
         <title type="html"><![CDATA[Hello World !]]></title>
         <id>https://yjxg.github.io/post/hello-world/</id>
