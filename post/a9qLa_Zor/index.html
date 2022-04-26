@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>编程算法——冒泡法 | 许戈的第一个网站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://yjxg.github.io/favicon.ico?v=1650967873478">
+<link rel="stylesheet" href="https://yjxg.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+💻编程算法——冒泡法（全文都是按照从小到大的思想进行说明）
+
+冒泡法，顾名思义有气泡上浮冒出水面的意思。冒泡法的核心思想就是通过连续相邻两个数的比较，从而使较大的数下沉或者较小的数上浮，通俗的讲，就是通过不断地比较而交换位置。而冒泡法主..." />
+    <meta name="keywords" content="算法,代码" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://yjxg.github.io">
+        <img src="https://yjxg.github.io/images/avatar.png?v=1650967873478" class="site-logo">
+        <h1 class="site-title">许戈的第一个网站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://yjxg.github.io/archives" class="site-nav" target="_blank">
+            搜索
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="http://yjxg.github.io" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      阳光，快乐的生活着！
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://yjxg.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">编程算法——冒泡法</h2>
+            <div class="post-date">2022-04-26</div>
+            
+              <div class="feature-container" style="background-image: url('https://yjxg.github.io/post-images/a9qLa_Zor.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <!-- more -->
+<p>💻编程算法——冒泡法（全文都是按照从小到大的思想进行说明）</p>
+<!-- more -->
+<p>冒泡法，顾名思义有气泡上浮冒出水面的意思。冒泡法的核心思想就是通过连续相邻两个数的比较，从而使较大的数下沉或者较小的数上浮，通俗的讲，就是通过不断地比较而交换位置。而冒泡法主要用在排序问题中。如果有n个数进行排序，冒泡法将是不二的选择，通过n-1轮比较，从第一轮开始依次相邻的两个数比较并交换位置。第一轮过后，将会得出最大的数排列到了最后，所以，第二轮比较的时候，就不用在与最大的数进行比较，从而又减少了一次相邻的数比较的次数，按照这种方法依次进行，最终将会得到一个从小到大排列的序列。</p>
+<!-- more -->
+<p><img src="https://yjxg.github.io/post-images/1650967639525.jpg" alt="" loading="lazy"><br>
+🔍典型例子：</p>
+<!-- more -->
+<p>假设n个同学站成一队，要求根据他们的身高（单位为cm）从低到高进行排列。</p>
+<!-- more -->
+<p>🖊问题分析：</p>
+<!-- more -->
+<p>首先将学生的身高存放在数组中，这个问题将转换为数组元素排序问题。排序问题可以采用冒泡法，冒泡法在这个问题中的基本思想是：从队列的最前面开始检查，比较相邻两个学生的身高，若个子高的学生在前，个子矮的学生在后，则需要交换他们的位置，当检查到队列的最后一个学生的时候，个子最高的同学已经被排到了队尾，这也就完成了第一轮的调整，处理第二轮时，任然从队列的最前面开始检查，意志检查到倒数第二位同学（因为身高最高的那位同学已经在第一轮中被排到了队尾），按照这样的循环，一次执行n-1次结束。</p>
+<!-- more -->
+<p>⌨️程序代码：<br>
+（1、用c语言实现）：<br>
+#include &lt;stdio.h&gt;<br>
+main ()<br>
+{<br>
+printf(&quot;please input a number :\n&quot;);<br>
+int height[1000],n,TS;<br>
+scanf(&quot;%d&quot;,&amp;n);<br>
+printf(&quot;please input the height of every students :\n&quot;);<br>
+for(int i=0;i&lt;n;i++)<br>
+scanf(&quot;%d&quot;,&amp;height[i]);<br>
+for(int i=1;i&lt;n-1;i++)<br>
+{<br>
+for(int j=0;j&lt;n-i;j++)<br>
+{<br>
+if(height[j]&gt;height[j+1])<br>
+{<br>
+TS=height[j];<br>
+height[j]=height[j+1];<br>
+height[j+1]=TS;<br>
+}<br>
+}<br>
+}<br>
+for(int i=0;i&lt;n;i++)<br>
+printf(&quot;%5d&quot;,height[i]);<br>
+return 0;<br>
+}</p>
+<!-- more -->
+<p>（用java语言实现）<br>
+//假设n个同学站成一排，要求根据他们的身高（单位：cm）从低到高进行排列；<br>
+import java.util.Scanner;<br>
+public class helloworld{<br>
+public static void main (String[] args){<br>
+System.out.println(&quot;请输入共有多少个学生：&quot;);<br>
+Scanner sc = new Scanner(System.in);<br>
+int n = sc.nextInt();<br>
+//因为学生的身高是浮点型数据，所以要浮点型定义；<br>
+double[] height = new double[n];<br>
+System.out.println(&quot;请输入每个同学的身高：&quot;);<br>
+//录入学生的身高；<br>
+for(int i = 0;i&lt; n ;i++) {<br>
+height[i] = sc.nextDouble();<br>
+}<br>
+//用冒泡法将数据进行排序；<br>
+//第一个for循环：总共比较n-1轮；<br>
+for(int i = 1;i &lt; n;i++){<br>
+for(int j = 0;j&lt;n-i;j++){<br>
+if(height[j]&gt;height[j+1]){<br>
+//定义一个交换变量；<br>
+double TS = height[j];<br>
+height[j] = height[j+1];<br>
+height[j+1] = TS;</p>
+<pre><code>            }
+        }
+    }
+    for(int i=0;i&lt;n;i++){
+        System.out.println(height[i]);
+    }
+
+}
+</code></pre>
+<p>}</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://yjxg.github.io/tag/LjGFfLiGq/" class="tag">
+                    算法
+                  </a>
+                
+                  <a href="https://yjxg.github.io/tag/qNBtrV-0y/" class="tag">
+                    代码
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://yjxg.github.io/post/bian-cheng-suan-fa-qiong-ju-fa/">
+                  <h3 class="post-title">
+                    编程算法——穷举法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
